@@ -37,7 +37,7 @@ elif  choice == 'Share your image':
         camera.release()
 
 elif choice == 'CamPred. PLAY FUN!':
-    Model_Path = 'WP8_HaLe_V3.ipynb'
+    Model_Path = 'my_model_save.h5'
     class_names = ['1000', '2000', '5000', '10000', '20000', '50000', '100000', '200000', '500000']
     model = tf.keras.models.load_model(Model_Path)
 
@@ -48,6 +48,7 @@ elif choice == 'CamPred. PLAY FUN!':
     captured_image = np.array(None)
 
     if not cap.isOpened():
+        FRAME_WINDOW = st.image([])
         while run:
             ret, frame = cap.read()        
             # Display Webcam
@@ -64,7 +65,7 @@ elif choice == 'CamPred. PLAY FUN!':
             st.write('Image is captured: ')
 
             #Resize the Image according with your model
-            captured_image = cv2.resize(frame, dsize=None,fx=0.3,fy=0.3)
+            captured_image = cv2.resize(224)
             #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
             img_array  = np.expand_dims(captured_image, axis=0)
             #Check the img_array here
