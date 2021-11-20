@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib as plt 
 import tensorflow as tf 
 
-menu = ['Home', 'All about', 'Projects', 'Camera', 'Music', 'Videos']
+menu = ['Home', 'All about', 'Projects', 'Share your image', 'Music', 'Videos', 'CamPred. PLAY FUN!']
 
 choice = st.sidebar.selectbox('MENU', menu)
 
@@ -19,20 +19,61 @@ if choice == 'Home':
     your_name = st.text_input("What's your name?")
     if your_name != '':
         st.write(your_name,' is a beautiful name!')
-        st.write('You can explore more at the next space. Have fun!')
-    
-        
-#     col1, col2 = st.columns(2)
-#     with col1:
-#         dog_name = st.text_input("What's dog name?")
-#         st.write('Your dog name: ', dog_name)    
-#     with col2:
-#         age = st.slider('Dog age', min_value = 1, max_value = 20)
-#         st.write('Your dog age: ', age)
+        st.write(your_name, ", let's explore more in the next space. Have fun!")
 
-#     # dog_name = st.text_input("What's dog name?")
-#     # st.write('Your dog name: ', dog_name)           # input từ người dùng 
-    
+
+elif  choice == 'Share your image':
+    st.title('Open your webcam')
+    st.warning('Webcam shows on local computer ONLY!')
+    show = st.checkbox('Show!')
+    FRAME_WINDOW = st.image([])
+    camera = cv2.VideoCapture(0)
+
+    while show:
+        _, frame = camera.read()
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        FRAME_WINDOW.image(frame)
+    else:
+        camera.realease()
+
+elif choice == 'CamPred. PLAY FUN!':
+    Model_Path = '___'
+    class_names = ['1000', '2000', '5000', '10000', '20000', '50000', '100000', '200000', '500000']
+    model = tf.keras.models.load_model(Model_Path)
+
+    cap = cv2.VideoCapture(0)
+    run = st.checkbox('Show Webcam')
+    capture_button = st.checkbox('Capture')
+
+    captured_image = np.array(None)
+
+    if not cap.isOpened():
+        while run:
+            ret, frame = cap.read()        
+            # Display Webcam
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB ) #Convert color
+            FRAME_WINDOW.image(frame)
+
+            if capture_button:
+                captured_image = frame 
+                break
+        cap.release()
+
+        if captured_image.all() != None:
+            st.image(captured_image)
+            st.write('Image is captured: ')
+
+            #Resize the Image according with your model
+            captured_image = cv2.resize(frame, dsize=None,fx=0.3,fy=0.3)
+            #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
+            img_array  = np.expand_dims(captured_image, axis=0)
+            #Check the img_array here
+            st.write(img_array)
+
+            prediction = model.predict(img_array)
+
+
+
 #     # age = st.slider('Dog age', min_value = 1, max_value = 20)  # tạo slider kéo 
 # elif choice == 'Read data':
 #     df = pd.read_csv('media/AB_NYC_2019.csv')
