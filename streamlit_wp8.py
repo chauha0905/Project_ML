@@ -37,9 +37,11 @@ elif  choice == 'Share your image':
         camera.release()
 
 elif choice == 'CamPred. PLAY FUN!':
-    Model_Path = 'my_model_save.h5'
+    model = tf.keras.models.load_model('my_model_save.h5')
     class_names = ['1000', '2000', '5000', '10000', '20000', '50000', '100000', '200000', '500000']
-    model = tf.keras.models.load_model(Model_Path)
+    model.compile(optimizer='adam',
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
 
     cap = cv2.VideoCapture(0)
     run = st.checkbox('Show Webcam')
@@ -65,7 +67,7 @@ elif choice == 'CamPred. PLAY FUN!':
             st.write('Image is captured: ')
 
             #Resize the Image according with your model
-            captured_image = cv2.resize(224)
+            captured_image = cv2.resize(224,224,3)
             #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
             img_array  = np.expand_dims(captured_image, axis=0)
             #Check the img_array here
