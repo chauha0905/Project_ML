@@ -15,7 +15,7 @@ choice = st.sidebar.selectbox('Side Menu?', menu)
 model = tf.keras.models.load_model('my_model_save.h5')
 class_names = ['1000', '2000', '5000', '10000', '20000', '50000', '100000', '200000', '500000']
 
-model.compile(compile(optimizer='adam',
+model.compile(optimizer='adam',
               loss='categorical_crossentropy',
               metrics=['accuracy']))
 
