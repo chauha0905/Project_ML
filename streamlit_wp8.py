@@ -37,7 +37,7 @@ elif  choice == 'Share your image':
         camera.release()
 
 elif choice == 'CamPred. PLAY FUN!':
-    Model_Path = 'my_model_save.h5'
+    Model_Path = 'WP8_HaLe_V3.ipynb'
     class_names = ['1000', '2000', '5000', '10000', '20000', '50000', '100000', '200000', '500000']
     model = tf.keras.models.load_model(Model_Path)
 
