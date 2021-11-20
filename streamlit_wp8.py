@@ -14,19 +14,13 @@ if choice == 'Home':
     st.header("Welcome to the playground")
     st.text('This is a playground. All about my interests! Leave your signs after visiting!')
 
-    st.image('media/Playground.jpg', caption= 'Can you swim?', use_column_width='auto')
-
-    col1, col2 = st.columns(2)
-    with col1:
-        your_name = st.text_input("What's your name?")
-        if your_name != '':
-            st.write(your_name,' is a beautiful name')
-    with col2:
-        your_sport = st.text_input("Can you swim?")
-        # if your_sport == 'No' or your_sport == 'no' or your_sport != 'NO' or your_sport == 'N' or your_sport == 'n':
-        #     st.write("It's better if you can swim! You can save me in the pool")
-        if your_sport != '':
-            st.write("Great! I can't swim, so you can save me!")
+    st.image('media/vespa.png', caption= 'Which activity do you like?')
+    
+    your_name = st.text_input("What's your name?")
+    if your_name != '':
+        st.write(your_name,' is a beautiful name!')
+        st.write('You can explore more at the next space. Have fun!')
+    
         
 #     col1, col2 = st.columns(2)
 #     with col1:
