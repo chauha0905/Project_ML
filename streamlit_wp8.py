@@ -34,10 +34,10 @@ elif  choice == 'Share your image':
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         FRAME_WINDOW.image(frame)
     else:
-        camera.realease()
+        camera.release()
 
 elif choice == 'CamPred. PLAY FUN!':
-    Model_Path = '___'
+    Model_Path = 'my_model_save.h5'
     class_names = ['1000', '2000', '5000', '10000', '20000', '50000', '100000', '200000', '500000']
     model = tf.keras.models.load_model(Model_Path)
 
