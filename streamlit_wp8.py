@@ -34,36 +34,38 @@ elif choice == 'Entertainment':
     st.audio('media/EverythingSucks-Vaultboy.mp3')
 
 elif choice == 'CamPred. PLAY FUN!':
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0)  # device 0
     run = st.checkbox('Show Webcam')
     capture_button = st.checkbox('Capture')
 
     captured_image = np.array(None)
 
     if not cap.isOpened():
-        FRAME_WINDOW = st.image([])
-        while run:
-            ret, frame = cap.read()        
-            # Display Webcam
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) #Convert color
-            FRAME_WINDOW.image(frame)
+        raise IOError("Cannot open webcam")
 
-            if capture_button:
-                captured_image = frame 
-                break
-        cap.release()
+    FRAME_WINDOW = st.image([])
+    while run:
+        ret, frame = cap.read()        
+        # Display Webcam
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)          #Convert color
+        FRAME_WINDOW.image(frame)
 
-        if captured_image.all() != None:
-            st.image(captured_image)
-            st.write('Image is captured: ')
+        if capture_button:      
+            captured_image = frame
+            break
 
-            
-            captured_image = cv2.resize(captured_image, (224,224)) #Resize Image according to model
-            img_array  = np.expand_dims(captured_image, axis=0) #Expand dim before plugging into the model
-            # st.write(img_array) #Check the img_array here
-            prediction = model.predict(img_array)   #Predictions
-            index = np.argmax(prediction.flatten())
-            st.write('You money is:', class_names[index])
+    cap.release()
+
+    if  captured_image.all() != None:
+        st.image(captured_image)
+        st.write('Image is captured:')
+        
+        captured_image = cv2.resize(captured_image, (224,224))  #Resize Image according to model
+        img_array  = np.expand_dims(captured_image, axis=0)     #Resize Image according to model
+        # st.write(img_array)                                   #Check the img_array here (no_use this line)
+        prediction = model.predict(img_array)
+        index = np.argmax(prediction.flatten())
+        st.write('You money is:', class_names[index])
 
 elif choice == 'PicPred. RICH HOOMAN!':
     st.image('media/VND_banknotes.png', caption='Such a rich one! Show your money here!')
