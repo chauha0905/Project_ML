@@ -29,7 +29,7 @@ elif choice == 'Entertainment':
 
     st.video('media/Believer_Imagine Dragons.mp4')
 
-    st.audio('')
+    st.audio('media/EverythingSucks-Vaultboy.mp3')
 
 
 
@@ -72,7 +72,7 @@ elif choice == 'CamPred. PLAY FUN!':
             st.write('Image is captured: ')
 
             #Resize the Image according with your model
-            captured_image = cv2.resize(224,224,3)
+            captured_image = cv2.resize(captured_image, (224,224))
             #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
             img_array  = np.expand_dims(captured_image, axis=0)
             #Check the img_array here
