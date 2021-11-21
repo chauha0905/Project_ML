@@ -15,9 +15,9 @@ choice = st.sidebar.selectbox('Side Menu', menu)
 
 
 # Load your model and check create the class_names list
-# Model_Path = 'my_model_save.h5'
-model = tf.keras.models.load_model('my_model_save.h5')
+Model_Path = 'my_model_save.h5'
 class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
+model = tf.keras.models.load_model(Model_Path)
 
 
 if choice == 'Capture From Webcam':
