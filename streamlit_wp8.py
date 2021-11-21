@@ -37,15 +37,21 @@ if choice == 'The Playground':
 elif choice == 'Entertainment':
     st.title('Freedom your soul')
     st.image('media/Entertainment.png')
-    st.subheader('Play your way!',)
+    st.subheader('\t Play your way!',)
     st.text('')
     st.text('')
     st.audio('media/EverythingSucks-Vaultboy.mp3')
     st.text('Everything sucks _ Vaultboy')
     st.text('')
     st.text('')
-    st.video('media/Believer_Imagine Dragons.mp4')
-    st.text('Believer _ Imagine Dragons')
+
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        st.video('media/Believer - Cover.mp4')
+        st.text('Believer \a Imagine Dragons \a Cover by Kids')
+    with col2:
+        st.video('media/Imagine Dragons - Natural.mp4')
+        st.text('Natural. \t Imagine Dragons')
 
    
 
