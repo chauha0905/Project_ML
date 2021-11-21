@@ -6,9 +6,19 @@ import numpy as np
 import matplotlib as plt 
 import tensorflow as tf 
 
-st.set_page_config(layout='wide', initial_sidebar_state='auto')
+st.set_page_config(layout='centered', initial_sidebar_state='auto')
+
+# Add model here
+Model_Path = 'my_model_save.h5'
+class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
+model = tf.keras.models.load_model(Model_Path)
+
+menu = ['The playground', 'PicPred', 'CamPred', 'Entertainment']
+choice = st.sidebar.selectbox('Homebox', menu)
 
 with st.sidebar:
+    st.text('')
+    st.text('')
     st.text('')
     st.text('')
     st.text('')
@@ -16,22 +26,12 @@ with st.sidebar:
     st.date_input('Today')
     st.time_input('Current time')
 
-st.text('')
-st.text('')
-
-menu = ['The playground', 'PicPred', 'CamPred', 'Entertainment']
-choice = st.sidebar.selectbox('Homebox', menu)
-
-Model_Path = 'my_model_save.h5'
-class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
-model = tf.keras.models.load_model(Model_Path)
-
 if choice == 'The playground':
     st.title("T h e p l a y g r o u n d")
     st.text('Leave your signs after visiting!')
     
     st.text('')
-    col1, col2 = st.columns([2,1])
+    col1, col2 = st.columns([1.5, 1])
     with col1:
         st.image('media/Playground.gif')
         st.subheader('Hi there.')
