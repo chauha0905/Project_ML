@@ -8,7 +8,6 @@ from tensorflow.python.keras import utils
 from tensorflow.keras.models import load_model
 import pickle
 import os
-import cdasfdas
 
 menu = ['Capture From Webcam']
 
