@@ -61,9 +61,11 @@ elif choice == 'CamPred. PLAY FUN!':
             #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
             img_array  = np.expand_dims(captured_image, axis=0)
             #Check the img_array here
-            st.write(img_array)
+            # st.write(img_array)
             #Predictions
-            model.predict(img_array)
+            prediction = model.predict(img_array)
+            index = np.argmax(prediction.flatten())
+            st.write('You money is:', class_names[index])
 
 elif choice == 'PicPred. RICH HOOMAN!':
     st.image('media/VND_banknotes.png', caption='Such a rich one! Show your money here!')
@@ -73,8 +75,10 @@ elif choice == 'PicPred. RICH HOOMAN!':
         image_np = np.asarray(bytearray(photo_uploaded.read()), dtype=np.uint8)
         img = cv2.imdecode(image_np, 1)
         st.image(img, channels='BGR')
-
+        captured_image = cv2.resize(img, (224,224))
         #Expand dim
         img_array  = np.expand_dims(img, axis=0)
         #Prediction
-        model.predict(img_array)
+        prediction = model.predict(img_array)
+        index = np.argmax(prediction.flatten())
+        st.write('You money is:', class_names[index])

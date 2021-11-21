@@ -59,7 +59,7 @@ if choice == 'Capture From Webcam':
 
         prediction = model.predict(img_array)
         index = np.argmax(prediction.flatten())
-        st.write(class_names[index])
+        st.write('You money is:', class_names[index])
         # Preprocess your prediction , How are we going to get the label name out from the prediction
         # Now it's your turn to solve the rest of the code
 
