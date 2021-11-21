@@ -1,7 +1,7 @@
 
 import streamlit as st 
 import pandas as pd
-import cv2
+import cv2 
 import numpy as np 
 import matplotlib as plt 
 import tensorflow as tf 
@@ -18,20 +18,25 @@ if choice == 'Home':
     st.header("Welcome to the playground")
     st.text('This is a playground. All about my interests! Leave your signs after visiting!')
 
-    st.image('media/vespa.png', caption= 'Which activity do you like?')
+    st.image('media/vespa.png', caption = 'Which activity do you like?')
     
-    your_name = st.text_input("What's your name?")
+    st.text("What's your name?")
+    your_name = st.text_input('')
     if your_name != '':
         st.write(your_name,' is a beautiful name!')
-        st.write(your_name, ", let's explore more in the next space. Have fun!")
+        st.write(your_name, "... Let's explore more in the next space. Have fun!")
 
 elif choice == 'Entertainment':
-    st.header('Freedom your soul here')
-    st.image('media/Entertainment.png', caption = 'Play yoyr way!')
-
-    st.video('media/Believer_Imagine Dragons.mp4')
+    st.header('FREEDOM YOUR SOUL!')
+    st.image('media/Entertainment.png')
+    st.subheader('Play your way!')
 
     st.audio('media/EverythingSucks-Vaultboy.mp3')
+
+    st.video('media/Believer_Imagine Dragons.mp4')
+    st.text('Believer _ Imagine Dragons')
+
+   
 
 elif choice == 'CamPred. PLAY FUN!':
     cap = cv2.VideoCapture(0)  # device 0
@@ -57,7 +62,7 @@ elif choice == 'CamPred. PLAY FUN!':
     cap.release()
 
     if  captured_image.all() != None:
-        st.image(captured_image)
+        # st.image(captured_image)                              # no_use this line 
         st.write('Image is captured:')
         
         captured_image = cv2.resize(captured_image, (224,224))  #Resize Image according to model
@@ -68,17 +73,17 @@ elif choice == 'CamPred. PLAY FUN!':
         st.write('You money is:', class_names[index])
 
 elif choice == 'PicPred. RICH HOOMAN!':
-    st.image('media/VND_banknotes.png', caption='Such a rich one! Show your money here!')
+    st.title('Such a rich hooman! Prove it!')
+    st.image('media/VND_banknotes.png')
 
     photo_uploaded = st.file_uploader('Upload your money', ['png', 'jpeg', 'jpg'])
     if photo_uploaded != None:
+        
         image_np = np.asarray(bytearray(photo_uploaded.read()), dtype=np.uint8)
         img = cv2.imdecode(image_np, 1)
         st.image(img, channels='BGR')
-        captured_image = cv2.resize(img, (224,224))
-        #Expand dim
-        img_array  = np.expand_dims(img, axis=0)
-        #Prediction
-        prediction = model.predict(img_array)
+        img_resized = cv2.resize(img, (224,224))                # no_use this line 
+        img_array  = np.expand_dims(img_resized, axis=0)        #Expand dim
+        prediction = model.predict(img_array)                   #Prediction
         index = np.argmax(prediction.flatten())
         st.write('You money is:', class_names[index])
