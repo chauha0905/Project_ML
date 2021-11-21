@@ -8,6 +8,7 @@ from tensorflow.python.keras import utils
 from tensorflow.keras.models import load_model
 import pickle
 import os
+import cdasfdas
 
 menu = ['Capture From Webcam']
 
@@ -28,6 +29,8 @@ if choice == 'Capture From Webcam':
     captured_image = np.array(None)
 
     # Check if the webcam is opened correctly
+
+
     if not cap.isOpened():
         raise IOError("Cannot open webcam")
 
