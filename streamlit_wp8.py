@@ -48,11 +48,14 @@ elif choice == 'Entertainment':
     col1, col2 = st.beta_columns(2)
     with col1:
         st.video('media/Believer - Cover.mp4')
-        st.text('Believer \a Imagine Dragons \a Cover by Kids')
+        st.text('Believer_Cover by Kids')
     with col2:
         st.video('media/Imagine Dragons - Natural.mp4')
-        st.text('Natural. \t Imagine Dragons')
-
+        st.text('Natural_Imagine Dragons')
+    st.text('')
+    st.text('')
+    st.text('')
+    st.text('Sources: YouTube & Internet')
    
 
 elif choice == 'CamPred':
