@@ -24,7 +24,12 @@ if choice == 'Home':
         st.write(your_name, ", let's explore more in the next space. Have fun!")
 
 elif choice == 'Entertainment':
-    st.header('Freedom your soul here!')
+    st.header('Freedom your soul here')
+    st.image('media/Entertainment.png', caption = 'Play yoyr way!')
+
+    st.video('media/Believer_Imagine Dragons.mp4')
+
+    st.audio('')
 
 
 
