@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib as plt 
 import tensorflow as tf 
 
-menu = ['Home', 'All about', 'Projects', 'Share your image', 'Music', 'Videos', 'CamPred. PLAY FUN!']
+menu = ['Home', 'All about', 'Projects', 'Share your image', 'Entertainment', 'PicPred', 'CamPred. PLAY FUN!']
 
 choice = st.sidebar.selectbox('MENU', menu)
 
@@ -37,6 +37,7 @@ elif  choice == 'Share your image':
         camera.release()
 
 elif choice == 'CamPred. PLAY FUN!':
+
     model = tf.keras.models.load_model('my_model_save.h5')
     class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
     model.compile(optimizer='adam',
@@ -75,7 +76,23 @@ elif choice == 'CamPred. PLAY FUN!':
 
             prediction = model.predict(img_array)
 
+elif choice == 'PicPred':
 
+    model = tf.keras.models.load_model('my_model_save.h5')
+    class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
+    model.compile(optimizer='adam',
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+    st.title('My puppy can show images')
+    photo_uploaded = st.file_uploader('Upload your best photo here', ['png', 'jpeg', 'jpg'])
+    if photo_uploaded!=None:
+        image_np = np.asarray(bytearray(photo_uploaded.read()), dtype=np.uint8)
+        img = cv2.imdecode(image_np, 1)
+        st.image(img, channels='BGR')
+
+        st.write(photo_uploaded.size)
+        st.write(photo_uploaded.type)
 
 #     # age = st.slider('Dog age', min_value = 1, max_value = 20)  # tạo slider kéo 
 # elif choice == 'Read data':
