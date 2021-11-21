@@ -109,9 +109,8 @@ elif choice == 'CamPred':
 
 elif choice == 'PicPred':
     st.title('Such a rich people!')
-    st.image('media/banknotes.png')
-    st.text("")
-    st.text("")
+    st.image('media/Thumb3.png')
+
     st.text("")
     st.subheader('Upload your money')
     photo_uploaded = st.file_uploader('',['png', 'jpeg', 'jpg'])
