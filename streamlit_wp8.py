@@ -69,8 +69,8 @@ elif choice == 'CamPred. PLAY FUN!':
             img_array  = np.expand_dims(captured_image, axis=0)
             #Check the img_array here
             st.write(img_array)
-            #Prediction
-            prediction = model.predict(img_array)
+            #Predictions
+            model.predict(img_array)
 
 elif choice == 'PicPred':
     st.image('media/VND_banknotes.png', caption='Such a rich one! Show your money here!')
@@ -81,8 +81,7 @@ elif choice == 'PicPred':
         img = cv2.imdecode(image_np, 1)
         st.image(img, channels='BGR')
 
-        #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
+        #Expand dim
         img_array  = np.expand_dims(img, axis=0)
-
         #Prediction
-        prediction = model.predict(img_array)
+        model.predict(img_array)
