@@ -126,8 +126,8 @@ elif choice == 'Auto Capture':
                 break
     cap.release() # close the camera
 
-        # close all the opened windows
-    cv2.destroyAllWindows()
+    #     # close all the opened windows
+    # cv2.destroyAllWindows()
 
 
 elif choice == 'PicPred. RICH HOOMAN!':
