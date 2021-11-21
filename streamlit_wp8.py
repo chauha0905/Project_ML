@@ -6,25 +6,31 @@ import numpy as np
 import matplotlib as plt 
 import tensorflow as tf 
 
-menu = ['The Playground', 'PicPred', 'CamPred', 'Entertainment']
+st.set_page_config(layout="wide")
 
+with st.sidebar:
+    st.date_input('Today')
+    st.time_input('Current time')
+
+st.text('')
+st.text('')
+
+menu = ['The Playground', 'PicPred', 'CamPred', 'Entertainment']
 choice = st.sidebar.selectbox('Homebox', menu)
 
 Model_Path = 'my_model_save.h5'
 class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
 model = tf.keras.models.load_model(Model_Path)
 
-if choice == 'The Playground':
+if choice == 'The playground':
     st.title("T h e P l a y g r o u n d")
     st.text('Leave your signs after visiting!')
-
-    # st.image('media/vespa.png', caption = 'Which activities do you like?')
     
     st.text('')
     col1, col2 = st.beta_columns([2,1])
     with col1:
         st.image('media/Playground.gif')
-        st.subheader('Hi.')
+        st.subheader('Hi there.')
     with col2:
         st.text('')
         st.text('')
@@ -35,15 +41,23 @@ if choice == 'The Playground':
             st.write(your_name,' is a beautiful name. \a Have a good day!')
 
 elif choice == 'Entertainment':
-    st.title('Freedom your soul')
-    st.image('media/thumb.gif')
-    st.subheader('\t Play your way!',)
-    st.text('')
-    st.text('')
-    st.audio('media/EverythingSucks-Vaultboy.mp3')
-    st.text('Everything sucks _ Vaultboy')
-    st.text('')
-    st.text('')
+    st.title('Enjoy your way!')
+
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        st.image('media/Thumb2.gif')
+    with col2:
+        st.text('')
+        st.text('')
+        st.text('')
+        st.text('')
+        st.text('')
+        st.text('')
+        st.text('')
+        st.text('')
+        st.audio('media/EverythingSucks-Vaultboy.mp3')
+        st.text('Everything sucks _ Vaultboy')
+        
 
     col1, col2 = st.beta_columns(2)
     with col1:
@@ -53,9 +67,8 @@ elif choice == 'Entertainment':
         st.video('media/Imagine Dragons - Natural.mp4')
         st.text('Natural_Imagine Dragons')
     st.text('')
-    st.text('')
-    st.text('')
-    st.text('Sources: YouTube & Internet')
+
+    st.text('(Sources: YouTube & Internet)')
    
 
 elif choice == 'CamPred':
