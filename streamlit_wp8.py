@@ -40,9 +40,6 @@ elif choice == 'CamPred. PLAY FUN!':
 
     model = tf.keras.models.load_model('my_model_save.h5')
     class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
-    model.compile(optimizer='adam',
-              loss='categorical_crossentropy',
-              metrics=['accuracy'])
 
     cap = cv2.VideoCapture(0)
     run = st.checkbox('Show Webcam')
@@ -77,12 +74,10 @@ elif choice == 'CamPred. PLAY FUN!':
             prediction = model.predict(img_array)
 
 elif choice == 'PicPred':
+    st.image('media/VND_banknotes.png', caption='Such a rich one! Show your money here!')
 
     model = tf.keras.models.load_model('my_model_save.h5')
     class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
-    model.compile(optimizer='adam',
-              loss='categorical_crossentropy',
-              metrics=['accuracy'])
 
     st.title('My puppy can show images')
     photo_uploaded = st.file_uploader('Upload your best photo here', ['png', 'jpeg', 'jpg'])
