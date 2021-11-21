@@ -79,9 +79,8 @@ elif choice == 'PicPred':
     model = tf.keras.models.load_model('my_model_save.h5')
     class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
 
-    st.title('My puppy can show images')
-    photo_uploaded = st.file_uploader('Upload your best photo here', ['png', 'jpeg', 'jpg'])
-    if photo_uploaded!=None:
+    photo_uploaded = st.file_uploader('Upload your money', ['png', 'jpeg', 'jpg'])
+    if photo_uploaded != None:
         image_np = np.asarray(bytearray(photo_uploaded.read()), dtype=np.uint8)
         img = cv2.imdecode(image_np, 1)
         st.image(img, channels='BGR')

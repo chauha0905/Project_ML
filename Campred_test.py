@@ -14,14 +14,11 @@ menu = ['Capture From Webcam']
 choice = st.sidebar.selectbox('Side Menu', menu)
 
 
-#Load your model and check create the class_names list
+# Load your model and check create the class_names list
 # Model_Path = 'my_model_save.h5'
 model = tf.keras.models.load_model('my_model_save.h5')
 class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
 
-model.compile(optimizer='adam',
-              loss='categorical_crossentropy',
-              metrics=['accuracy'])
 
 if choice == 'Capture From Webcam':
     cap = cv2.VideoCapture(0)  # device 0
@@ -52,7 +49,7 @@ if choice == 'Capture From Webcam':
         st.write('Image is captured:')
 
         #Resize the Image according with your model
-        captured_image = cv2.resize(224, 224)
+        captured_image = cv2.resize(224, 224, 3)
         #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
         img_array  = np.expand_dims(captured_image, axis=0)
         #Check the img_array here
@@ -62,3 +59,4 @@ if choice == 'Capture From Webcam':
 
         # Preprocess your prediction , How are we going to get the label name out from the prediction
         # Now it's your turn to solve the rest of the code
+
