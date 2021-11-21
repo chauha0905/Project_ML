@@ -55,11 +55,11 @@ if choice == 'Capture From Webcam':
         #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
         img_array  = np.expand_dims(captured_image, axis=0)
         #Check the img_array here
-        st.write(img_array)
+        # st.write(img_array)
 
         prediction = model.predict(img_array)
-        np.argmax(prediction)
-
+        index = np.argmax(prediction.flatten())
+        st.write(class_names[index])
         # Preprocess your prediction , How are we going to get the label name out from the prediction
         # Now it's your turn to solve the rest of the code
 
