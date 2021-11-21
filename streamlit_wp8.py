@@ -80,14 +80,14 @@ elif choice == 'CamPred':
 elif choice == 'Auto Capture':
     TIMER = int(20)
     cap = cv2.VideoCapture(0) # Open the camera
-    run = st.checkbox('Show Webcam')
+    # run = st.checkbox('Show Webcam')
     
     if not cap.isOpened():
         raise IOError("Cannot open webcam")
     
     FRAME_WINDOW = st.image([])
-    while run:
-        while True:
+    # while run:
+    while True:
             ret, img = cap.read() # Read and display each frame
             cv2.imshow('a', img)
 
@@ -124,10 +124,10 @@ elif choice == 'Auto Capture':
             # Press Esc to exit
             elif k == 27:
                 break
-        cap.release() # close the camera
+    cap.release() # close the camera
 
         # close all the opened windows
-        cv2.destroyAllWindows()
+    cv2.destroyAllWindows()
 
 
 elif choice == 'PicPred. RICH HOOMAN!':
