@@ -10,8 +10,9 @@ menu = ['Home', 'All about', 'Entertainment', 'PicPred. RICH HOOMAN!', 'CamPred.
 
 choice = st.sidebar.selectbox('MENU', menu)
 
-model = tf.keras.models.load_model('my_model_save.h5')
+Model_Path = 'my_model_save.h5'
 class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
+model = tf.keras.models.load_model(Model_Path)
 
 if choice == 'Home':
     st.header("Welcome to the playground")
@@ -44,7 +45,7 @@ elif choice == 'CamPred. PLAY FUN!':
         while run:
             ret, frame = cap.read()        
             # Display Webcam
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB ) #Convert color
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) #Convert color
             FRAME_WINDOW.image(frame)
 
             if capture_button:
@@ -56,14 +57,11 @@ elif choice == 'CamPred. PLAY FUN!':
             st.image(captured_image)
             st.write('Image is captured: ')
 
-            #Resize the Image according with your model
-            captured_image = cv2.resize(captured_image, (224,224))
-            #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
-            img_array  = np.expand_dims(captured_image, axis=0)
-            #Check the img_array here
-            # st.write(img_array)
-            #Predictions
-            prediction = model.predict(img_array)
+            
+            captured_image = cv2.resize(captured_image, (224,224)) #Resize Image according to model
+            img_array  = np.expand_dims(captured_image, axis=0) #Expand dim before plugging into the model
+            # st.write(img_array) #Check the img_array here
+            prediction = model.predict(img_array)   #Predictions
             index = np.argmax(prediction.flatten())
             st.write('You money is:', class_names[index])
 
