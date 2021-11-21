@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib as plt 
 import tensorflow as tf 
 
-menu = ['Home', 'All about', 'Projects', 'Share your image', 'Entertainment', 'PicPred', 'CamPred. PLAY FUN!']
+menu = ['Home', 'All about', 'Entertainment', 'PicPred. RICHER HOOMAN!', 'CamPred. PLAY FUN!']
 
 choice = st.sidebar.selectbox('MENU', menu)
 
@@ -13,7 +13,6 @@ model = tf.keras.models.load_model('my_model_save.h5')
 class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
 
 if choice == 'Home':
-
     st.header("Welcome to the playground")
     st.text('This is a playground. All about my interests! Leave your signs after visiting!')
 
@@ -24,20 +23,24 @@ if choice == 'Home':
         st.write(your_name,' is a beautiful name!')
         st.write(your_name, ", let's explore more in the next space. Have fun!")
 
+elif choice == 'Entertainment':
+    st.header('Freedom your soul here!')
 
-elif  choice == 'Share your image':
-    st.title('Open your webcam')
-    st.warning('Webcam shows on local computer ONLY!')
-    show = st.checkbox('Show!')
-    FRAME_WINDOW = st.image([])
-    camera = cv2.VideoCapture(0)
 
-    while show:
-        _, frame = camera.read()
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        FRAME_WINDOW.image(frame)
-    else:
-        camera.release()
+
+# elif  choice == 'Share your image':
+#     st.title('Open your webcam')
+#     st.warning('Webcam shows on local computer ONLY!')
+#     show = st.checkbox('Show!')
+#     FRAME_WINDOW = st.image([])
+#     camera = cv2.VideoCapture(0)
+
+#     while show:
+#         _, frame = camera.read()
+#         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+#         FRAME_WINDOW.image(frame)
+#     else:
+#         camera.release()
 
 elif choice == 'CamPred. PLAY FUN!':
     cap = cv2.VideoCapture(0)
@@ -72,7 +75,7 @@ elif choice == 'CamPred. PLAY FUN!':
             #Predictions
             model.predict(img_array)
 
-elif choice == 'PicPred':
+elif choice == 'PicPred. RICHER HOOMAN!':
     st.image('media/VND_banknotes.png', caption='Such a rich one! Show your money here!')
 
     photo_uploaded = st.file_uploader('Upload your money', ['png', 'jpeg', 'jpg'])
