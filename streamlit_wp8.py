@@ -6,16 +6,20 @@ import numpy as np
 import matplotlib as plt 
 import tensorflow as tf 
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout='wide', initial_sidebar_state='auto')
 
 with st.sidebar:
+    st.text('')
+    st.text('')
+    st.text('')
+    st.text('')
     st.date_input('Today')
     st.time_input('Current time')
 
 st.text('')
 st.text('')
 
-menu = ['The Playground', 'PicPred', 'CamPred', 'Entertainment']
+menu = ['The playground', 'PicPred', 'CamPred', 'Entertainment']
 choice = st.sidebar.selectbox('Homebox', menu)
 
 Model_Path = 'my_model_save.h5'
@@ -23,11 +27,11 @@ class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50
 model = tf.keras.models.load_model(Model_Path)
 
 if choice == 'The playground':
-    st.title("T h e P l a y g r o u n d")
+    st.title("T h e p l a y g r o u n d")
     st.text('Leave your signs after visiting!')
     
     st.text('')
-    col1, col2 = st.beta_columns([2,1])
+    col1, col2 = st.columns([2,1])
     with col1:
         st.image('media/Playground.gif')
         st.subheader('Hi there.')
@@ -43,7 +47,7 @@ if choice == 'The playground':
 elif choice == 'Entertainment':
     st.title('Enjoy your way!')
 
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
     with col1:
         st.image('media/Thumb2.gif')
     with col2:
@@ -59,7 +63,7 @@ elif choice == 'Entertainment':
         st.text('Everything sucks _ Vaultboy')
         
 
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
     with col1:
         st.video('media/Believer - Cover.mp4')
         st.text('Believer_Cover by Kids')
