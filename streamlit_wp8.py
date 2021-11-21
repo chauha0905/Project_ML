@@ -36,7 +36,7 @@ if choice == 'The Playground':
 
 elif choice == 'Entertainment':
     st.title('Freedom your soul')
-    st.image('media/Entertainment.png')
+    st.image('media/thumb.gif')
     st.subheader('\t Play your way!',)
     st.text('')
     st.text('')
