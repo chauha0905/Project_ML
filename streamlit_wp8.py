@@ -16,15 +16,19 @@ model = tf.keras.models.load_model(Model_Path)
 
 if choice == 'Home':
     st.title("T h e P l a y g r o u n d")
-    st.text('This is a playground. All about my interests! Leave your signs after visiting!')
+    st.text('Leave your signs after visiting!')
 
-    st.image('media/vespa.png', caption = 'Which activities do you like?')
-    
-    st.subheader("What's your name?")
-    your_name = st.text_input('')
-    if your_name != '':
-        st.write(your_name,' is a beautiful name!')
-        st.write(your_name, "... Let's explore more in the next space. Have fun!")
+    # st.image('media/vespa.png', caption = 'Which activities do you like?')
+    st.image('media/Playground.gif', caption = 'Which activities do you like?')
+    col1, col2 = st.columns(2)
+    with col1:
+        st.text('Have a good day')
+    with col2:
+        st.subheader("What's your name?")
+        your_name = st.text_input('')
+        if your_name != '':
+            st.write(your_name,' is a beautiful name!')
+            st.write(your_name, "... Let's explore more in the next space. Have fun!")
 
 elif choice == 'Entertainment':
     st.title('Freedom your soul')
