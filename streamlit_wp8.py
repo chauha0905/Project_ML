@@ -22,7 +22,7 @@ with st.sidebar:
     st.text('')
     st.text('')
     st.text('')
-    st.text('')
+    st.text('') 
     st.image('media/Playground.gif')
     st.date_input('Today')
     st.time_input('Current time')
@@ -32,18 +32,11 @@ if choice == 'The playground':
     st.text('Leave your signs after visiting!')
     
     st.text('')
-    col1, col2 = st.columns([1.5, 1])
-    with col1:
-        st.image('media/Playground.gif')
-        st.subheader('Hi there.')
-    with col2:
-        st.text('')
-        st.text('')
-        st.text('')
-        st.text('')
-        your_name = st.text_input("What's your name?")
-        if your_name != '':
-            st.write(your_name,' is a beautiful name. \a Have a good day!')
+    st.image('media/2.png')
+    st.subheader('Hi there.')
+    your_name = st.text_input("What's your name?")
+    if your_name != '':
+        st.write(your_name,' is a beautiful name. Have a good day!')
 
 elif choice == 'Entertainment':
     st.title('Enjoy your way!')
