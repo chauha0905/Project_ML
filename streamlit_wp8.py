@@ -7,7 +7,7 @@ import matplotlib as plt
 import tensorflow as tf 
 import time 
 
-menu = ['Home', 'All about', 'Entertainment', 'PicPred. RICH HOOMAN!', 'CamPred']
+menu = ['Home', 'All about', 'Entertainment', 'PicPred. RICH HOOMAN!', 'CamPred', 'Auto Capture']
 
 choice = st.sidebar.selectbox('MENU', menu)
 
@@ -41,23 +41,12 @@ elif choice == 'Entertainment':
 
 elif choice == 'CamPred':
     st.title('PLAY FUN!')
-    
+
     cap = cv2.VideoCapture(0)  # device 0
 
     st.subheader('Take a photo of banknotes, please!')
     run = st.checkbox('Show Webcam')
-
-    def countdown(t):
-        while t:
-            mins, secs = divmod(t, 60)
-            timer = '{:02d}:{:02d}'.format(mins, secs)
-            print(timer, end="\r")
-            time.sleep(1)
-            t -= 1
-    t = input('Start counting down:')
-    countdown(t)
-
-    capture_button = st.checkbox('Capture')
+    capture_button = st.checkbox('Capture') 	
 
     captured_image = np.array(None)
 
@@ -78,15 +67,68 @@ elif choice == 'CamPred':
     cap.release()
 
     if  captured_image.all() != None:
-        # st.write('Image is captured:')
-        
+            # st.write('Image is captured:')
+            
         captured_image = cv2.resize(captured_image, (224,224))  #Resize Image according to model
         img_array  = np.expand_dims(captured_image, axis=0)     #Resize Image according to model
-        # st.write(img_array)                                   #Check the img_array here (no_use this line)
+            # st.write(img_array)                                   #Check the img_array here (no_use this line)
         prediction = model.predict(img_array)
         index = np.argmax(prediction.flatten())
 
         st.write("Answer: It's", class_names[index], "VND")
+
+elif choice == 'Auto Capture':
+    TIMER = int(20)
+    cap = cv2.VideoCapture(0) # Open the camera
+    run = st.checkbox('Show Webcam')
+    
+    if not cap.isOpened():
+        raise IOError("Cannot open webcam")
+    
+    FRAME_WINDOW = st.image([])
+    while run:
+        while True:
+            ret, img = cap.read() # Read and display each frame
+            cv2.imshow('a', img)
+
+            k = cv2.waitKey(125) # check for the key pressed
+
+            if k == ord('q'): # set the key for the countdown # to begin. Here we set q # if key pressed is q
+                prev = time.time()
+                while TIMER >= 0:
+                    ret, img = cap.read()
+
+                    font = cv2.FONT_HERSHEY_SIMPLEX  # Display countdown on each frame  # specify the font and draw the  # countdown using puttext
+                    cv2.putText(img, str(TIMER),
+                                (200, 250), font,
+                                7, (0, 255, 255),
+                                4, cv2.LINE_AA)
+                    cv2.imshow('a', img)
+                    cv2.waitKey(125)
+
+                    cur = time.time()           # current time
+                    if cur-prev >= 1:           # Update and keep track of Countdown  # if time elapsed is one second   # than decrease the counter
+                        prev = cur
+                        TIMER = TIMER-1
+                else:
+                    ret, img = cap.read()
+                    cv2.imshow('a', img)        # Display the clicked frame for 2 # sec.You can increase time in  # waitKey also
+                    cv2.waitKey(2000)           # time for which image displayed
+                    cv2.imwrite('camera.jpg', img)  # Save the frame
+                    img = cv2.resize(img, (224,224))  #Resize Image according to model
+                    img_array  = np.expand_dims(img, axis=0)     #Resize Image according to model
+                    prediction = model.predict(img_array)
+                    index = np.argmax(prediction.flatten())
+                    st.write("Answer: It's", class_names[index], "VND")
+                    # HERE we can reset the Countdown timer # if we want more Capture without closing # the camera
+            # Press Esc to exit
+            elif k == 27:
+                break
+        cap.release() # close the camera
+
+        # close all the opened windows
+        cv2.destroyAllWindows()
+
 
 elif choice == 'PicPred. RICH HOOMAN!':
     st.title('Such a rich hooman! Prove it!')
