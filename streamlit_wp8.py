@@ -9,6 +9,9 @@ menu = ['Home', 'All about', 'Projects', 'Share your image', 'Entertainment', 'P
 
 choice = st.sidebar.selectbox('MENU', menu)
 
+model = tf.keras.models.load_model('my_model_save.h5')
+class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
+
 if choice == 'Home':
 
     st.header("Welcome to the playground")
@@ -37,10 +40,6 @@ elif  choice == 'Share your image':
         camera.release()
 
 elif choice == 'CamPred. PLAY FUN!':
-
-    model = tf.keras.models.load_model('my_model_save.h5')
-    class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
-
     cap = cv2.VideoCapture(0)
     run = st.checkbox('Show Webcam')
     capture_button = st.checkbox('Capture')
@@ -70,14 +69,11 @@ elif choice == 'CamPred. PLAY FUN!':
             img_array  = np.expand_dims(captured_image, axis=0)
             #Check the img_array here
             st.write(img_array)
-
+            #Prediction
             prediction = model.predict(img_array)
 
 elif choice == 'PicPred':
     st.image('media/VND_banknotes.png', caption='Such a rich one! Show your money here!')
-
-    model = tf.keras.models.load_model('my_model_save.h5')
-    class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
 
     photo_uploaded = st.file_uploader('Upload your money', ['png', 'jpeg', 'jpg'])
     if photo_uploaded != None:
@@ -85,48 +81,8 @@ elif choice == 'PicPred':
         img = cv2.imdecode(image_np, 1)
         st.image(img, channels='BGR')
 
-        st.write(photo_uploaded.size)
-        st.write(photo_uploaded.type)
+        #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
+        img_array  = np.expand_dims(img, axis=0)
 
-#     # age = st.slider('Dog age', min_value = 1, max_value = 20)  # tạo slider kéo 
-# elif choice == 'Read data':
-#     df = pd.read_csv('media/AB_NYC_2019.csv')
-#     st.dataframe(df)
-
-# elif choice == 'About me':
-#     # st.audio('media/Impact_Moderato.mp3')
-#     fileUp = st.file_uploader('Your upload', type = ['jpg', 'jpeg', 'png'])   # max size = 200MB
-#     st.image(fileUp)
-#     # model.predict(fileUp)  # hint for weekly project, should resize / preprocessing before predict
-
-# elif choice == 'Camera':
-#     st.title('Open your webcam')
-#     st.warning('Webcam show on local computer ONLY')
-#     show = st.checkbox('Show!')
-#     FRAME_WINDOW = st.image([])
-#     camera = cv2.VideoCapture(0) # device 1/2
-
-#     while show:
-#         _, frame = camera.read()
-#         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-#         FRAME_WINDOW.image(frame)
-#     else:
-#         camera.release()
-
-#     cam = cv2.VideoCapture(0) # device 0. If not work, try with 1 or 2
-
-#     if not cam.isOpened():
-#         raise IOError("Cannot open webcam")
-
-#     while True:
-#         ret, frame = cam.read()
-#         frame = cv2.flip(frame, 1)
-        
-#         cv2.imshow('My App!', frame)
-
-#         key = cv2.waitKey(1) & 0xFF
-#         if key==ord("q"):
-#             break
-
-#     cam.release()
-#     cv2.destroyAllWindows()
+        #Prediction
+        prediction = model.predict(img_array)
