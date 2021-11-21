@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib as plt 
 import tensorflow as tf 
 
-menu = ['Home', 'All about', 'Entertainment', 'PicPred. RICHER HOOMAN!', 'CamPred. PLAY FUN!']
+menu = ['Home', 'All about', 'Entertainment', 'PicPred. RICH HOOMAN!', 'CamPred. PLAY FUN!']
 
 choice = st.sidebar.selectbox('MENU', menu)
 
@@ -30,22 +30,6 @@ elif choice == 'Entertainment':
     st.video('media/Believer_Imagine Dragons.mp4')
 
     st.audio('media/EverythingSucks-Vaultboy.mp3')
-
-
-
-# elif  choice == 'Share your image':
-#     st.title('Open your webcam')
-#     st.warning('Webcam shows on local computer ONLY!')
-#     show = st.checkbox('Show!')
-#     FRAME_WINDOW = st.image([])
-#     camera = cv2.VideoCapture(0)
-
-#     while show:
-#         _, frame = camera.read()
-#         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-#         FRAME_WINDOW.image(frame)
-#     else:
-#         camera.release()
 
 elif choice == 'CamPred. PLAY FUN!':
     cap = cv2.VideoCapture(0)
@@ -80,7 +64,7 @@ elif choice == 'CamPred. PLAY FUN!':
             #Predictions
             model.predict(img_array)
 
-elif choice == 'PicPred. RICHER HOOMAN!':
+elif choice == 'PicPred. RICH HOOMAN!':
     st.image('media/VND_banknotes.png', caption='Such a rich one! Show your money here!')
 
     photo_uploaded = st.file_uploader('Upload your money', ['png', 'jpeg', 'jpg'])
