@@ -57,7 +57,8 @@ if choice == 'Capture From Webcam':
         #Check the img_array here
         # st.write(img_array)
 
-        model.predict(img_array)
+        prediction = model.predict(img_array)
+        index = np.argmax(prediction[0])
 
         # Preprocess your prediction , How are we going to get the label name out from the prediction
         # Now it's your turn to solve the rest of the code
