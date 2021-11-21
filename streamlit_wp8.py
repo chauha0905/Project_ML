@@ -23,6 +23,7 @@ with st.sidebar:
     st.text('')
     st.text('')
     st.text('')
+    st.image('media/Playground.gif')
     st.date_input('Today')
     st.time_input('Current time')
 
