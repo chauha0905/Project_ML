@@ -5,7 +5,6 @@ import cv2
 import numpy as np 
 import matplotlib as plt 
 import tensorflow as tf 
-import time 
 
 menu = ['Home', 'All about', 'Entertainment', 'PicPred. RICH HOOMAN!', 'CamPred', 'Auto Capture']
 
@@ -16,24 +15,27 @@ class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50
 model = tf.keras.models.load_model(Model_Path)
 
 if choice == 'Home':
-    st.header("Welcome to the playground")
+    st.title("T h e P l a y g r o u n d")
     st.text('This is a playground. All about my interests! Leave your signs after visiting!')
 
-    st.image('media/vespa.png', caption = 'Which activity do you like?')
+    st.image('media/vespa.png', caption = 'Which activities do you like?')
     
-    st.text("What's your name?")
+    st.subheader("What's your name?")
     your_name = st.text_input('')
     if your_name != '':
         st.write(your_name,' is a beautiful name!')
         st.write(your_name, "... Let's explore more in the next space. Have fun!")
 
 elif choice == 'Entertainment':
-    st.header('FREEDOM YOUR SOUL!')
+    st.title('Freedom your soul')
     st.image('media/Entertainment.png')
-    st.subheader('Play your way!')
-
+    st.subheader('Play your way!',)
+    st.text('')
+    st.text('')
     st.audio('media/EverythingSucks-Vaultboy.mp3')
-
+    st.text('Everything sucks _ Vaultboy')
+    st.text('')
+    st.text('')
     st.video('media/Believer_Imagine Dragons.mp4')
     st.text('Believer _ Imagine Dragons')
 
