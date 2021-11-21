@@ -6,29 +6,33 @@ import numpy as np
 import matplotlib as plt 
 import tensorflow as tf 
 
-menu = ['Home', 'All about', 'Entertainment', 'PicPred. RICH HOOMAN!', 'CamPred', 'Auto Capture']
+menu = ['The Playground', 'PicPred', 'CamPred', 'Entertainment']
 
-choice = st.sidebar.selectbox('MENU', menu)
+choice = st.sidebar.selectbox('Homebox', menu)
 
 Model_Path = 'my_model_save.h5'
 class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
 model = tf.keras.models.load_model(Model_Path)
 
-if choice == 'Home':
+if choice == 'The Playground':
     st.title("T h e P l a y g r o u n d")
     st.text('Leave your signs after visiting!')
 
     # st.image('media/vespa.png', caption = 'Which activities do you like?')
-    st.image('media/Playground.gif', caption = 'Which activities do you like?')
-    col1, col2 = st.columns(2)
+    
+    st.text('')
+    col1, col2 = st.beta_columns([2,1])
     with col1:
-        st.text('Have a good day')
+        st.image('media/Playground.gif')
+        st.subheader('Hi.')
     with col2:
-        st.subheader("What's your name?")
-        your_name = st.text_input('')
+        st.text('')
+        st.text('')
+        st.text('')
+        st.text('')
+        your_name = st.text_input("What's your name?")
         if your_name != '':
-            st.write(your_name,' is a beautiful name!')
-            st.write(your_name, "... Let's explore more in the next space. Have fun!")
+            st.write(your_name,' is a beautiful name. \a Have a good day!')
 
 elif choice == 'Entertainment':
     st.title('Freedom your soul')
@@ -46,7 +50,7 @@ elif choice == 'Entertainment':
    
 
 elif choice == 'CamPred':
-    st.title('PLAY FUN!')
+    st.title('Play fun!')
 
     cap = cv2.VideoCapture(0)  # device 0
 
@@ -83,8 +87,8 @@ elif choice == 'CamPred':
 
         st.write("Answer: It's", class_names[index], "VND")
 
-elif choice == 'PicPred. RICH HOOMAN!':
-    st.title('Such a rich hooman! Prove it!')
+elif choice == 'PicPred':
+    st.title('Such a rich people!')
     st.image('media/banknotes.png')
 
     st.subheader('Upload your money')
@@ -98,4 +102,4 @@ elif choice == 'PicPred. RICH HOOMAN!':
         img_array  = np.expand_dims(img_resized, axis=0)        #Expand dim
         prediction = model.predict(img_array)                   #Prediction
         index = np.argmax(prediction.flatten())
-        st.write('You money is:', class_names[index])
+        st.write("Answer: It's", class_names[index], "VND")
