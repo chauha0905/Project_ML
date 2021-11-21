@@ -4,8 +4,10 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 import tensorflow as tf
-import h5py 
+from tensorflow.python.keras import utils
 from tensorflow.keras.models import load_model
+import pickle
+import os
 
 menu = ['Capture From Webcam']
 
@@ -14,7 +16,7 @@ choice = st.sidebar.selectbox('Side Menu', menu)
 
 #Load your model and check create the class_names list
 # Model_Path = 'my_model_save.h5'
-model = tf.keras.models.load_model(r'my_model_save.h5')
+model = tf.keras.models.load_model('my_model_save.h5')
 class_names = ['1000', '2000', '5000', '10000', '20000', '50000', '100000', '200000', '500000']
 
 model.compile(optimizer='adam',
@@ -27,7 +29,6 @@ if choice == 'Capture From Webcam':
     capture_button = st.checkbox('Capture')
 
     captured_image = np.array(None)
-
 
     # Check if the webcam is opened correctly
     if not cap.isOpened():
@@ -48,7 +49,7 @@ if choice == 'Capture From Webcam':
 
     if  captured_image.all() != None:
         st.image(captured_image)
-        st.write('Image is capture:')
+        st.write('Image is captured:')
 
         #Resize the Image according with your model
         captured_image = cv2.resize(224, 224)
