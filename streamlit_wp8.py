@@ -5,8 +5,9 @@ import cv2
 import numpy as np 
 import matplotlib as plt 
 import tensorflow as tf 
+import time 
 
-menu = ['Home', 'All about', 'Entertainment', 'PicPred. RICH HOOMAN!', 'CamPred. PLAY FUN!']
+menu = ['Home', 'All about', 'Entertainment', 'PicPred. RICH HOOMAN!', 'CamPred']
 
 choice = st.sidebar.selectbox('MENU', menu)
 
@@ -38,9 +39,24 @@ elif choice == 'Entertainment':
 
    
 
-elif choice == 'CamPred. PLAY FUN!':
+elif choice == 'CamPred':
+    st.title('PLAY FUN!')
+    
     cap = cv2.VideoCapture(0)  # device 0
+
+    st.subheader('Take a photo of banknotes, please!')
     run = st.checkbox('Show Webcam')
+
+    def countdown(t):
+        while t:
+            mins, secs = divmod(t, 60)
+            timer = '{:02d}:{:02d}'.format(mins, secs)
+            print(timer, end="\r")
+            time.sleep(1)
+            t -= 1
+    t = input('Start counting down:')
+    countdown(t)
+
     capture_button = st.checkbox('Capture')
 
     captured_image = np.array(None)
@@ -62,23 +78,24 @@ elif choice == 'CamPred. PLAY FUN!':
     cap.release()
 
     if  captured_image.all() != None:
-        # st.image(captured_image)                              # no_use this line 
-        st.write('Image is captured:')
+        # st.write('Image is captured:')
         
         captured_image = cv2.resize(captured_image, (224,224))  #Resize Image according to model
         img_array  = np.expand_dims(captured_image, axis=0)     #Resize Image according to model
         # st.write(img_array)                                   #Check the img_array here (no_use this line)
         prediction = model.predict(img_array)
         index = np.argmax(prediction.flatten())
-        st.write('You money is:', class_names[index])
+
+        st.write("Answer: It's", class_names[index], "VND")
 
 elif choice == 'PicPred. RICH HOOMAN!':
     st.title('Such a rich hooman! Prove it!')
-    st.image('media/VND_banknotes.png')
+    st.image('media/banknotes.png')
 
-    photo_uploaded = st.file_uploader('Upload your money', ['png', 'jpeg', 'jpg'])
+    st.subheader('Upload your money')
+    photo_uploaded = st.file_uploader('',['png', 'jpeg', 'jpg'])
+
     if photo_uploaded != None:
-        
         image_np = np.asarray(bytearray(photo_uploaded.read()), dtype=np.uint8)
         img = cv2.imdecode(image_np, 1)
         st.image(img, channels='BGR')
