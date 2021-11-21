@@ -5,6 +5,7 @@ import cv2
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import h5py 
+from tensorflow.keras.models import load_model
 
 menu = ['Capture From Webcam']
 
@@ -50,7 +51,7 @@ if choice == 'Capture From Webcam':
         st.write('Image is capture:')
 
         #Resize the Image according with your model
-        captured_image = cv2.resize(224, 224, 3)
+        captured_image = cv2.resize(224, 224)
         #Expand dim to make sure your img_array is (1, Height, Width , Channel ) before plugging into the model
         img_array  = np.expand_dims(captured_image, axis=0)
         #Check the img_array here
