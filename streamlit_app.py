@@ -40,13 +40,21 @@ if choice == 'The playground':
     st.image('media/2.png')
     st.subheader('Hi there.')
 
-    wishes = ["Have a good day!", "Enjoy your day!", "Such a beautiful day. Enjoy it!", "It's a good day for going out. Meet your friends!"]
-    wishes_for_name = [" is a beautiful name.", " is a lovely name."]
-    your_name = st.text_input("What's your name?")
+    wishes = ["Have a good day!", "Enjoy your day!", "Such a beautiful day. Enjoy it!", "It's a good day for going out. Meet your friends!"]    
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        your_name = st.text_input("What's your name?")
+    with col2:
+        gender = st.text_input('Are you male? (y/n)')
     
     if your_name != '':
-        st.write(your_name, random.choices(wishes_for_name))
-        st.write(random.choice(wishes))
+        if gender == 'y' or gender == 'Y' or gender == 'YES' or gender == 'yes':
+            st.write(your_name, " is a great name.")
+            st.write(random.choice(wishes))
+        elif gender == 'n' or gender == 'N' or gender == 'no' or gender == 'NO':
+            st.write(your_name, " is a lovely name.")
+            st.write(random.choice(wishes))
 
 elif choice == 'Childhood game':
     st.title('The priceless treasure.')
