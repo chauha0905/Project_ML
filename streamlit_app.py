@@ -86,7 +86,8 @@ elif choice == 'CamPred':
 
     FRAME_WINDOW = st.image([])
     while run:
-        ret, frame = cap.read()        
+        ret, frame = cap.read()
+        frame = cv2.flip(frame, 1)        
         # Display Webcam
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)          #Convert color
         FRAME_WINDOW.image(frame)
