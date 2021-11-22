@@ -92,17 +92,17 @@ elif choice == 'Childhood game':
                 if computer == "Paper":
                     st.write("You lose!")
                 else:
-                    st.write("You win!")
+                    st.write("You won!")
             elif player == "Paper" or player == 'PAPER' or player == "paper" or player == "p" or player == "P":
                 if computer == "Rock":
-                    st.write("You win!")
+                    st.write("You won!")
                 else:
                     st.write("You lose!")
             elif player == "Scissors" or player == "SCISSORS" or player == "scissors" or player == "s" or player == 'S':
                 if computer == "Rock":
                     st.write("You lose!")
                 else:
-                    st.write("You win!")
+                    st.write("You won!")
             else:
                 st.write("WRONG INPUT! Please redo!")
 
