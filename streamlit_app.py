@@ -58,15 +58,14 @@ elif choice == 'Childhood game':
         st.text("* Scissors/scissors/SCISSORS/s/S")
 
     with col2:
-        # st.text_input('Fill your choice & Enter')
         player = st.text_input('Fill your choice & Enter')
         computer = np.random.randint(0,3)
     
         if computer == 0:
             computer = "Rock"
-        if computer == 1:
+        elif computer == 1:
             computer = "Paper"
-        if computer == 2:
+        elif computer == 2:
             computer = "Scissors"
 
         st.text("")
@@ -76,6 +75,7 @@ elif choice == 'Childhood game':
         if player == computer:
             st.write("Draw")
         else:
+            if player == 'Rock' or player == 'ROCK' or player == 'rock' or player == 'r' or 
             if player == "Rock" or player == "rock" or player == "ROCK" or player == "r" or player == "R":
                 if computer == "Paper":
                     st.write("You lose!")
