@@ -107,7 +107,6 @@ elif choice == 'Entertainment':
         st.text('')
         st.audio('media/Always Remember Us This Way-Lady Gaga.mp3')
         st.text('Always remember us this way _ Lady Gaga')
-        
         st.audio('media/EverythingSucks-Vaultboy.mp3')
         st.text('Everything sucks _ Vaultboy')
         st.text('')
