@@ -111,6 +111,12 @@ elif choice == 'Entertainment':
         st.text('')
         st.audio('media/EverythingSucks-Vaultboy.mp3')
         st.text('Everything sucks _ Vaultboy')
+        st.text('')
+        st.audio('media/Hymn For The Weekend_ColdPlay.mp3')
+        st.text('Hymn for the weekend _ ColdPlay')
+        st.text('')
+        st.audio('media/Break My Heart_DuaLipa.mp3')
+        st.text('Break my heart _ DuaLipa')
         
     col1, col2 = st.columns(2)
     with col1:
