@@ -44,19 +44,17 @@ if choice == 'The playground':
 elif choice == 'Childhood game':
     st.title('Childhood is a priceless treasure.')
     st.text("What was your childhood's memory?")
+    st.image('media/game3.png')
     st.text('')
     st.text('')
+    st.header('Rock. Paper. Scissors. SHOOT')
 
     col1, col2 = st.columns([1, 2])
     with col1:
-        st.image('media/game2.png')
-
-    with col2:
-        st.header('Game')
-        st.write('Rock. Paper. Scissors. SHOOT')
         st.text("Intro: This is a game named 'đấm-lá-kéo'.")
         st.text("Tips: Enter your choice by words: Rock/rock/ROCK/r/R.")
 
+    with col2:
         player = st.text_input("Fill your choice: ")
         computer = np.random.randint(0,2)
     
