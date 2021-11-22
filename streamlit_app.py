@@ -111,7 +111,7 @@ elif choice == 'CamPred':
     
     with st.spinner(text='In progress'):
         time.sleep(5)
-        st.success('Done')
+        st.success('Status: In progress')
 
 
 elif choice == 'PicPred':
