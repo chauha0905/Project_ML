@@ -63,7 +63,7 @@ elif choice == 'Childhood game':
             computer = "Rock"
         elif computer == 1:
             computer = "Paper"
-        elif computer == 2:
+        else:
             computer = "Scissors"
 
         st.text("")
