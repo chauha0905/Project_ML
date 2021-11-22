@@ -72,23 +72,23 @@ elif choice == 'Childhood game':
         st.write("You choose: ", player)
         st.write("Computer chooses: ", computer)
 
-        if player == computer:
+        if computer == player:
             st.write("Draw")
         else:
             if player == 'Rock' or player == 'ROCK' or player == 'rock' or player == 'r' or player == 'R':
                 if computer == "Paper":
                     st.write("You lose!")
-                if computer == 'Scissors':
+                else:
                     st.write("You win!")
             elif player == "Paper" or player == 'PAPER' or player == "paper" or player == "p" or player == "P":
                 if computer == "Rock":
                     st.write("You win!")
-                if computer == 'Scissors':
+                else:
                     st.write("You lose!")
             elif player == "Scissors" or player == "SCISSORS" or player == "scissors" or player == "s" or player == 'S':
                 if computer == "Rock":
                     st.write("You lose!")
-                if computer == 'Paper':
+                else:
                     st.write("You win!")
             else:
                 st.write("Wrong input! Please retype!")
