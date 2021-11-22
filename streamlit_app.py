@@ -14,7 +14,7 @@ Model_Path = 'my_model_save.h5'
 class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
 model = tf.keras.models.load_model(Model_Path)
 
-menu = ['The playground', 'PicPred', 'CamPred', 'Entertainment']
+menu = ['The playground', 'Childhood game', 'PicPred', 'CamPred', 'Entertainment']
 choice = st.sidebar.selectbox('Homebox', menu)
 
 with st.sidebar:
@@ -40,6 +40,43 @@ if choice == 'The playground':
     your_name = st.text_input("What's your name?")
     if your_name != '':
         st.write(your_name,' is a beautiful name. Have a good day!')
+
+elif choice == 'Childhood game':
+    player = st.text_input("Fill your choice: ")
+    computer = np.random.randint(0,2)
+   
+    if computer == 0:
+        computer = "Rock"
+    if computer == 1:
+        computer = "Paper"
+    else:
+        computer = "Scissors"
+
+    st.text("")
+    st.subheader("You choose: ", player)
+    st.subheader("Computer chooses: ", computer)
+
+    if player == computer:
+        st.write("Draw")
+    else:
+        if player == "Rock" or player == "rock" or player == "ROCK" or player == "r" or player == "R":
+            if computer == "Paper":
+                st.subheader("You lose!")
+            else:
+                st.subheader("You win!")
+        elif player == "Paper" or player == "P" or player == "paper" or player == "p" or player == "PAPER":
+            if computer == "Rock":
+                st.subheader("You win!")
+            else:
+                st.subheader("You lose!")
+        elif player == "Scissors" or player == "SCISSORS" or player == "S" or player == "s":
+            if computer == "Rock":
+                st.subheader("You lose!")
+            else:
+                st.subheader("You win!")
+        else:
+            st.subheader("Wrong input! Please retype!")
+
 
 elif choice == 'Entertainment':
     st.title('Enjoy your way!')
