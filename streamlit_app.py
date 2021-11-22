@@ -83,7 +83,7 @@ elif choice == 'Childhood game':
 
         st.text("")
         st.write("You choose: ", player)
-        st.write("Computer chooses: ", computer)
+        st.write("Your childhood chooses: ", computer)
 
         if computer == player:
             st.write("Draw")
