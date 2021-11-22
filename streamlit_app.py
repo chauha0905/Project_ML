@@ -62,8 +62,8 @@ elif choice == 'Entertainment':
     col1, col2 = st.columns(2)
     with col1:
         video_file = open('media/Believer - Cover.mp4', 'rb')
-        # video_bytes = video_file.read()
-        st.video(video_file.read())
+        video_bytes = video_file.read()
+        st.video(video_bytes)
         
         st.text('Believer_Cover by Kids')
     with col2:
