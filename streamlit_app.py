@@ -75,6 +75,7 @@ elif choice == 'CamPred':
     cap = cv2.VideoCapture(0)  # device 0
 
     st.subheader('Take a photo of banknotes, please!')
+    st.text('(Using Vietnamese dong only)')
     run = st.checkbox('Show Webcam')
     capture_button = st.checkbox('Capture') 	
 
@@ -113,6 +114,8 @@ elif choice == 'PicPred':
 
     st.text("")
     st.subheader('Upload your money')
+    st.text('(Using Vietnamese dong only)')
+
     photo_uploaded = st.file_uploader('',['png', 'jpeg', 'jpg'])
 
     if photo_uploaded != None:
