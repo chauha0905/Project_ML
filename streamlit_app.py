@@ -154,7 +154,8 @@ elif choice == 'CamPred':
         prediction = model.predict(img_array)                   #Prediction by array
         index = np.argmax(prediction.flatten())                 
         st.write("Answer: It's", class_names[index], "VND")
-        st.write("The predictions can not work well sometimes. Don't be serious. JUST FOR FUN!")
+        st.write("The predictions can work not well sometimes. Don't be serious.")
+        st.write('JUST FOR FUN!')
 
     st.success('Application status: In progress')
 
@@ -176,6 +177,7 @@ elif choice == 'PicPred':
         prediction = model.predict(img_array)                   #Prediction
         index = np.argmax(prediction.flatten())
         st.write("Answer: It's", class_names[index], "VND")
-        st.write("The predictions can not work well sometimes. Don't be serious. JUST FOR FUN!")
+        st.write("The predictions can work not well sometimes. Don't be serious.")
+        st.write('JUST FOR FUN!')
     
 # Thank you!
