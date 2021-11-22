@@ -59,7 +59,7 @@ elif choice == 'Childhood game':
 
     with col2:
         player = st.text_input("Fill your choice: ")
-        computer = np.random.randint(0,2)
+        computer = np.random.randint(0,3)
     
         if computer == 0:
             computer = "Rock"
