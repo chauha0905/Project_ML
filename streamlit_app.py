@@ -42,7 +42,7 @@ if choice == 'The playground':
         st.write(your_name,' is a beautiful name. Have a good day!')
 
 elif choice == 'Childhood game':
-    st.title('Childhood is a priceless treasure.')
+    st.title('The priceless treasure.')
     st.text("What was your childhood's memory?")
     st.image('media/game3.png')
     st.header('Rock. Paper. Scissors. SHOOT!')
@@ -89,7 +89,7 @@ elif choice == 'Childhood game':
                 else:
                     st.write("You win!")
             else:
-                st.write("Wrong input! Please retype!")
+                st.write("WRONG INPUT! Please redo!")
 
 elif choice == 'Entertainment':
     st.title('Enjoy your way!')
