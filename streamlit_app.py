@@ -5,6 +5,7 @@ import cv2
 import numpy as np 
 import matplotlib as plt 
 import tensorflow as tf 
+import random
 
 st.set_page_config(layout='centered', initial_sidebar_state='auto')
 
@@ -38,9 +39,14 @@ if choice == 'The playground':
     st.text('')
     st.image('media/2.png')
     st.subheader('Hi there.')
+
+    wishes = ["Have a good day!", "Enjoy your day!", "Such a beautiful day. Enjoy it!", "It's a good day for going out. Meet your friends!"]
+    wishes_for_name = [" is a beautiful name.", " is a lovely name."]
     your_name = st.text_input("What's your name?")
+    
     if your_name != '':
-        st.write(your_name,' is a beautiful name. Have a good day!')
+        st.write(your_name, random.choices(wishes_for_name))
+        st.write(random.choice(wishes))
 
 elif choice == 'Childhood game':
     st.title('The priceless treasure.')
