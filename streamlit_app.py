@@ -47,9 +47,9 @@ elif choice == 'Childhood game':
     st.text('')
     st.text('')
 
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([1, 2])
     with col1:
-        st.image('media/Childhood_game.png')
+        st.image('media/game2.png')
 
     with col2:
         st.header('Game')
