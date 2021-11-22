@@ -105,7 +105,7 @@ elif choice == 'CamPred':
         prediction = model.predict(img_array)
         index = np.argmax(prediction.flatten())
         st.write("Answer: It's", class_names[index], "VND")
-        st.text("The predicton can not work well sometime. Don't be serious, it's just for fun!")
+        st.write("The predictions can not work well sometimes. Don't be serious. JUST FOR FUN!")
 
 elif choice == 'PicPred':
     st.title('Such a rich people!')
@@ -126,3 +126,5 @@ elif choice == 'PicPred':
         prediction = model.predict(img_array)                   #Prediction
         index = np.argmax(prediction.flatten())
         st.write("Answer: It's", class_names[index], "VND")
+        st.write("The predictions can not work well sometimes. Don't be serious. JUST FOR FUN!")
+
