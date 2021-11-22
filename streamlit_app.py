@@ -102,20 +102,10 @@ elif choice == 'CamPred':
             
         captured_image = cv2.resize(captured_image, (224,224))  #Resize Image according to model
         img_array  = np.expand_dims(captured_image, axis=0)     #Resize Image according to model
-            # st.write(img_array)                                   #Check the img_array here (no_use this line)
         prediction = model.predict(img_array)
-        for i in range(len(prediction)):
-            if prediction.all() >= 0.8:
-                index = np.argmax(prediction.flatten())
-                st.write("Answer: It's", class_names[index], "VND")
-            else:
-                st.write('Answer: Unknown')
-# The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
-
-# print("This picture is: ", class_name[np.argmax(predict[0])], (predict[0]))
-#     print(np.max(predict[0],axis=0))
-#     if (np.max(predict)>=0.8) and (np.argmax(predict[0])!=0):
-
+        index = np.argmax(prediction.flatten())
+        st.write("Answer: It's", class_names[index], "VND")
+        st.text("The predicton can not work well sometime. Don't be serious, it's just for fun!")
 
 elif choice == 'PicPred':
     st.title('Such a rich people!')
