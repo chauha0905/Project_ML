@@ -5,6 +5,7 @@ import cv2
 import numpy as np 
 import matplotlib as plt 
 import tensorflow as tf 
+import time
 
 st.set_page_config(layout='centered', initial_sidebar_state='auto')
 
@@ -107,6 +108,11 @@ elif choice == 'CamPred':
         index = np.argmax(prediction.flatten())
         st.write("Answer: It's", class_names[index], "VND")
         st.write("The predictions can not work well sometimes. Don't be serious. JUST FOR FUN!")
+    
+    with st.spinner(text='In progress'):
+        time.sleep(5)
+        st.success('Done')
+
 
 elif choice == 'PicPred':
     st.title('Such a rich people!')
