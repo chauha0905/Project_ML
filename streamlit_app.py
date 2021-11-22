@@ -59,12 +59,15 @@ elif choice == 'Entertainment':
         st.audio('media/EverythingSucks-Vaultboy.mp3')
         st.text('Everything sucks _ Vaultboy')
         
-
     col1, col2 = st.columns(2)
     with col1:
-        st.video('media/Believer - Cover.mp4')
+        video_file = open('media/Believer - Cover.mp4', 'rb')
+        video_bytes = video_file.read()
+        st.video(video_bytes)
+        
         st.text('Believer_Cover by Kids')
     with col2:
+
         st.video('media/Imagine Dragons - Natural.mp4')
         st.text('Natural_Imagine Dragons')
     st.text('')
