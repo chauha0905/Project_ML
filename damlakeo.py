@@ -7,18 +7,17 @@ choice = st.sidebar.selectbox('Homebox', menu)
 if choice == 'Rock, paper, scissors':
     player = st.text_input("Fill your option: ")
     computer = randint(0,2)
-    # Rock, paper, scissors, shoot
+   
     if computer == 0:
-        computer = "Rock)"
+        computer = "Rock"
     if computer == 1:
         computer = "Paper"
     else:
         computer = "Scissors"
-    st.write(computer)
 
-    st.text("\n---")
-    st.write("You choose: " + player)
-    st.write("Computer chooses: " + str(computer))
+    st.text("")
+    st.write("You choose: ", player)
+    st.write("Computer chooses: ", computer)
 
     if player == computer:
         st.write("Draw")
