@@ -42,6 +42,9 @@ if choice == 'The playground':
         st.write(your_name,' is a beautiful name. Have a good day!')
 
 elif choice == 'Childhood game':
+    st.title('Childhood is a priceless treasure')
+    st.text("What was your childhood's memory?")
+    st.image()
     player = st.text_input("Fill your choice: ")
     computer = np.random.randint(0,2)
    
@@ -53,29 +56,29 @@ elif choice == 'Childhood game':
         computer = "Scissors"
 
     st.text("")
-    st.subheader("You choose: ", player)
-    st.subheader("Computer chooses: ", computer)
+    st.write("You choose: ", player)
+    st.write("Computer chooses: ", computer)
 
     if player == computer:
         st.write("Draw")
     else:
         if player == "Rock" or player == "rock" or player == "ROCK" or player == "r" or player == "R":
             if computer == "Paper":
-                st.subheader("You lose!")
+                st.write("You lose!")
             else:
-                st.subheader("You win!")
+                st.write("You win!")
         elif player == "Paper" or player == "P" or player == "paper" or player == "p" or player == "PAPER":
             if computer == "Rock":
-                st.subheader("You win!")
+                st.write("You win!")
             else:
-                st.subheader("You lose!")
+                st.write("You lose!")
         elif player == "Scissors" or player == "SCISSORS" or player == "S" or player == "s":
             if computer == "Rock":
-                st.subheader("You lose!")
+                st.write("You lose!")
             else:
-                st.subheader("You win!")
+                st.write("You win!")
         else:
-            st.subheader("Wrong input! Please retype!")
+            st.write("Wrong input! Please retype!")
 
 
 elif choice == 'Entertainment':
