@@ -5,7 +5,7 @@ import cv2
 import numpy as np 
 import matplotlib as plt 
 import tensorflow as tf 
-import time
+from datetime import datetime
 
 st.set_page_config(layout='centered', initial_sidebar_state='auto')
 
@@ -25,8 +25,12 @@ with st.sidebar:
     st.text('')
     st.text('') 
     st.image('media/Playground.gif')
+    
+    # Add in datetime in sidebar
     st.date_input('Today')
-    st.time_input('Current time')
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    st.time_input('Current time', current_time)
 
 if choice == 'The playground':
     st.title("T h e p l a y g r o u n d")
