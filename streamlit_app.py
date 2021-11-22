@@ -58,8 +58,8 @@ elif choice == 'Childhood game':
         st.text("* Scissors/scissors/SCISSORS/s/S")
 
     with col2:
-        st.write('Fill your choice & Enter')
-        player = st.text_input('')
+        # st.text_input('Fill your choice & Enter')
+        player = st.text_input('Fill your choice & Enter')
         computer = np.random.randint(0,3)
     
         if computer == 0:
