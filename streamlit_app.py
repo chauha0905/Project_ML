@@ -62,7 +62,7 @@ elif choice == 'Childhood game':
     st.image('media/game3.png')
     st.header('Rock. Paper. Scissors. SHOOT!')
     
-    col1, col2 = st.columns([1.5, 1])
+    col1, col2 = st.columns([1, 1.1])
     with col1:
         st.text("This is a game named 'đấm-lá-kéo'.")
         st.text("Tips: Enter your choice by words:")
@@ -83,7 +83,7 @@ elif choice == 'Childhood game':
 
         st.text("")
         st.write("You choose: ", player)
-        st.write("Your childhood chooses: ", computer)
+        st.write("The childhood chooses: ", computer)
 
         if computer == player:
             st.write("Draw")
