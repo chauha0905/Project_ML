@@ -52,20 +52,21 @@ elif choice == 'Childhood game':
     col1, col2 = st.columns([1.5, 1])
     with col1:
         st.text("Intro: This is a game named 'đấm-lá-kéo'.")
-        st.text("Tips: Enter your choice by words")
-        st.text("- Rock/rock/ROCK/r/R")
-        st.text("- Paper/paper/PAPER/p/P")
-        st.text("- Scissors/scissors/SCISSORS/s/S")
+        st.text("Tips: Enter your choice by words:")
+        st.text("* Rock/rock/ROCK/r/R")
+        st.text("* Paper/paper/PAPER/p/P")
+        st.text("* Scissors/scissors/SCISSORS/s/S")
 
     with col2:
-        player = st.text_input("Fill your choice & Enter")
+        st.write('Fill your choice & Enter')
+        player = st.text_input('')
         computer = np.random.randint(0,3)
     
         if computer == 0:
             computer = "Rock"
         if computer == 1:
             computer = "Paper"
-        else:
+        if computer == 2:
             computer = "Scissors"
 
         st.text("")
@@ -80,7 +81,7 @@ elif choice == 'Childhood game':
                     st.write("You lose!")
                 if computer == 'Scissors':
                     st.write("You win!")
-            elif player == "Paper" or player == "P" or player == "paper" or player == "p" or player == "PAPER":
+            elif player == "Paper" or player == 'P' or player == "paper" or player == "p" or player == "PAPER":
                 if computer == "Rock":
                     st.write("You win!")
                 if computer == 'Scissors':
