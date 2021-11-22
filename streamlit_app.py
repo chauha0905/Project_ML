@@ -25,12 +25,12 @@ with st.sidebar:
     st.text('')
     st.text('') 
     st.image('media/Playground.gif')
-    
+
     # Add in datetime in sidebar
     st.date_input('Today')
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    st.time_input('Current time', current_time)
+    st.time_input('Current time')
 
 if choice == 'The playground':
     st.title("T h e p l a y g r o u n d")
