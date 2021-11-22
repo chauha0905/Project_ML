@@ -1,13 +1,12 @@
-import random
-from random import randint
 import streamlit as st
+import numpy as np
 
 menu = ['Rock, paper, scissors']
 choice = st.sidebar.selectbox('Homebox', menu)
 
 if choice == 'Rock, paper, scissors':
     player = st.text_input("Fill your option: ")
-    computer = randint(0,2)
+    computer = np.random.randint(0,2)
    
     if computer == 0:
         computer = "Rock"
