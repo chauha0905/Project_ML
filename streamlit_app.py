@@ -28,8 +28,6 @@ with st.sidebar:
 
     # Add in datetime in sidebar
     st.date_input('Today')
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
     st.time_input('Current time')
 
 if choice == 'The playground':
@@ -64,6 +62,7 @@ elif choice == 'Entertainment':
 
     col1, col2 = st.columns(2)
     with col1:
+        st.video()
         st.video('media/Believer - Cover.mp4')
         st.text('Believer_Cover by Kids')
     with col2:
@@ -112,10 +111,8 @@ elif choice == 'CamPred':
         index = np.argmax(prediction.flatten())
         st.write("Answer: It's", class_names[index], "VND")
         st.write("The predictions can not work well sometimes. Don't be serious. JUST FOR FUN!")
-    
-    with st.spinner(text='In progress'):
-        time.sleep(5)
-        st.success('Status: In progress')
+
+    st.success('Status: In progress')
 
 
 elif choice == 'PicPred':
