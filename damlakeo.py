@@ -1,3 +1,4 @@
+import random
 from random import randint
 import streamlit as st
 
@@ -24,19 +25,19 @@ if choice == 'Rock, paper, scissors':
     else:
         if player == "Rock" or player == "rock" or player == "ROCK" or player == "r" or player == "R":
             if computer == "Paper":
-                st.write("Lose")
+                st.write("You lose!")
             else:
-                st.write("Win")
+                st.write("You win!")
         elif player == "Paper" or player == "P" or player == "paper" or player == "p" or player == "PAPER":
             if computer == "Rock":
-                st.write("Win")
+                st.write("You win!")
             else:
-                st.write("Lose")
+                st.write("You lose!")
         elif player == "Scissors" or player == "SCISSORS" or player == "S" or player == "s":
             if computer == "Rock":
-                st.write("Lose")
+                st.write("You lose!")
             else:
-                st.write("Win")
+                st.write("You win!")
         else:
             st.write("Wrong input! Please retype!")
         
