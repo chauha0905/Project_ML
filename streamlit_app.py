@@ -47,12 +47,15 @@ elif choice == 'Childhood game':
     st.image('media/game3.png')
     st.text('')
     st.text('')
-    st.header('Rock. Paper. Scissors. SHOOT')
+    st.header('Rock. Paper. Scissors. SHOOT!')
 
-    col1, col2 = st.columns([1, 2])
+    col1, col2 = st.columns([1.5, 1])
     with col1:
         st.text("Intro: This is a game named 'đấm-lá-kéo'.")
-        st.text("Tips: Enter your choice by words: Rock/rock/ROCK/r/R.")
+        st.text("Tips: Enter your choice by words")
+        st.text("- Rock/rock/ROCK/r/R")
+        st.text("- Paper/paper/PAPER/p/P")
+        st.text("- Scissors/scissors/SCISSORS/s/S")
 
     with col2:
         player = st.text_input("Fill your choice: ")
@@ -75,13 +78,16 @@ elif choice == 'Childhood game':
             if player == "Rock" or player == "rock" or player == "ROCK" or player == "r" or player == "R":
                 if computer == "Paper":
                     st.write("You lose!")
+                # elif computer == "Scissors":
+                #     st.write('You lose!')
                 else:
                     st.write("You win!")
             elif player == "Paper" or player == "P" or player == "paper" or player == "p" or player == "PAPER":
                 if computer == "Rock":
-                    st.write("You win!")
-                else:
                     st.write("You lose!")
+                # elif computer == "Paper":
+                else:
+                    st.write("You win!")
             elif player == "Scissors" or player == "SCISSORS" or player == "S" or player == "s":
                 if computer == "Rock":
                     st.write("You lose!")
