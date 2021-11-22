@@ -1,6 +1,7 @@
 
 import streamlit as st 
 import pandas as pd
+import cv2
 import numpy as np 
 import matplotlib as plt 
 import tensorflow as tf 
@@ -103,9 +104,18 @@ elif choice == 'CamPred':
         img_array  = np.expand_dims(captured_image, axis=0)     #Resize Image according to model
             # st.write(img_array)                                   #Check the img_array here (no_use this line)
         prediction = model.predict(img_array)
-        index = np.argmax(prediction.flatten())
+        for i in range(len(prediction)):
+            if prediction.all() >= 0.8:
+                index = np.argmax(prediction.flatten())
+                st.write("Answer: It's", class_names[index], "VND")
+            else:
+                st.write('Answer: Unknown')
+# The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 
-        st.write("Answer: It's", class_names[index], "VND")
+# print("This picture is: ", class_name[np.argmax(predict[0])], (predict[0]))
+#     print(np.max(predict[0],axis=0))
+#     if (np.max(predict)>=0.8) and (np.argmax(predict[0])!=0):
+
 
 elif choice == 'PicPred':
     st.title('Such a rich people!')
