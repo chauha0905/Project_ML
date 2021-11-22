@@ -62,7 +62,6 @@ elif choice == 'Entertainment':
 
     col1, col2 = st.columns(2)
     with col1:
-        st.video()
         st.video('media/Believer - Cover.mp4')
         st.text('Believer_Cover by Kids')
     with col2:
