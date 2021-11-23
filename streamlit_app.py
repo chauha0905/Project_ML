@@ -11,7 +11,7 @@ st.set_page_config(layout='centered', initial_sidebar_state='auto')
 
 # Add prediction model _ VND Banknotes
 # Model_Path = 'my_model_save.h5'
-Model_Path = 'my_model_final1.h5'
+Model_Path = 'my_model_save.h5'
 class_names = ['1000', '10000', '100000', '2000', '20000', '200000', '5000', '50000', '500000']
 model = tf.keras.models.load_model(Model_Path)
 
