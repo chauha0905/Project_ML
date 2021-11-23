@@ -49,10 +49,10 @@ if choice == 'The playground':
         gender = st.text_input('Are you male? (y/n)')
     
     if your_name != '':
-        if gender == 'y' or gender == 'Y' or gender == 'YES' or gender == 'yes':
+        if gender == 'y' or gender == 'Y':
             st.write(your_name, " is a great name.")
             st.write(random.choice(wishes))
-        elif gender == 'n' or gender == 'N' or gender == 'no' or gender == 'NO':
+        elif gender == 'n' or gender == 'N':
             st.write(your_name, " is a lovely name.")
             st.write(random.choice(wishes))
 
