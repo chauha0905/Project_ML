@@ -1,2 +1,2 @@
-# Project_ML
-machine_learning_projects
+# VND_Banknotes_Detection
+Machine_Learning_Weekly_Project
