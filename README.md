@@ -1,2 +1,2 @@
 # VND_Banknotes_Detection
-Machine_Learning_Weekly_Project
+VND_Banknotes_Detection
