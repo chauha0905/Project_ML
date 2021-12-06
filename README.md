@@ -1,2 +1,2 @@
-# VND_Banknotes_Detection
-VND_Banknotes_Detection
+# VND_Banknotes_Recognition 
+
